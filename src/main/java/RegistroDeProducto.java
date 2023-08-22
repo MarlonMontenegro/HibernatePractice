@@ -1,24 +1,28 @@
+import com.tienda.modelo.Categoria;
 import com.tienda.modelo.Producto;
+import com.tienda.modelo.dao.CategoriaDao;
+import com.tienda.modelo.dao.ProductoDao;
+import com.tienda.modelo.utils.JPAUtils;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
 public class RegistroDeProducto {
     public static void main(String[] args) {
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("tienda");
-        EntityManager em = factory.createEntityManager();
+        EntityManager em = JPAUtils.getEntityManager();
+        ProductoDao productoDao = new ProductoDao(em);
+        CategoriaDao categoriaDao = new CategoriaDao(em);
 
-        Producto celular = new Producto();
+        Categoria celulares = new Categoria("CELULARES");
 
-        celular.setNombre("Samsung");
-        celular.setDescription("Teléfono Usado, 200gb");
-        celular.setPrecio(new BigDecimal("1000"));
 
+        Producto samsung = new Producto("Samsung", "Note 20", new BigDecimal(1000), celulares);
         em.getTransaction().begin();
-        em.persist(celular);
+
+        productoDao.guardar(samsung);
+        categoriaDao.guardar(celulares);
+
         em.getTransaction().commit();
         em.close();
 
