@@ -2,15 +2,6 @@
 
 This is a sample project showcasing how to use Hibernate and JPA (Java Persistence API) for data persistence in a Java application. In this project, we cover understanding the issues with JDBC and how JPA solves them, adding JPA to a Java application using Maven, configuring JPA via the `persistence.xml` file, mapping JPA entities and their relationships, understanding the JPA entity lifecycle, and performing queries using JPQL (Java Persistence Query Language).
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Configuration](#configuration)
-- [Entity Mapping](#entity-mapping)
-- [Entity Lifecycle](#entity-lifecycle)
-- [Queries with JPQL](#queries-with-jpql)
-
-
 ## Introduction
 
 In the world of Java database programming, JDBC (Java Database Connectivity) was a common way to interact with databases. However, JDBC had challenges such as repetitive code, security issues, and lack of portability. This is where JPA comes into play, a specification that defines how persistent entities should be managed in Java applications.
