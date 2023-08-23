@@ -9,8 +9,7 @@ This is a sample project showcasing how to use Hibernate and JPA (Java Persisten
 - [Entity Mapping](#entity-mapping)
 - [Entity Lifecycle](#entity-lifecycle)
 - [Queries with JPQL](#queries-with-jpql)
-- [Contributions](#contributions)
-- [License](#license)
+
 
 ## Introduction
 
