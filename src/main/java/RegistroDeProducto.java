@@ -6,10 +6,21 @@ import com.tienda.modelo.utils.JPAUtils;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class RegistroDeProducto {
     public static void main(String[] args) {
+        registrarProducto();
+        EntityManager manager = JPAUtils.getEntityManager();
+        ProductoDao productoDao = new ProductoDao(manager);
+        Producto producto = productoDao.consultaPorId(1);
+        System.out.println(producto.getNombre());
 
+        List<Producto> productos = productoDao.consultarPorNomber("Samsung");
+        productos.forEach(p -> System.out.println(producto.getDescription()));
+    }
+
+    private static void registrarProducto() {
         EntityManager em = JPAUtils.getEntityManager();
         ProductoDao productoDao = new ProductoDao(em);
         CategoriaDao categoriaDao = new CategoriaDao(em);
@@ -22,9 +33,7 @@ public class RegistroDeProducto {
 
         productoDao.guardar(samsung);
         categoriaDao.guardar(celulares);
-
         em.getTransaction().commit();
         em.close();
-
     }
 }

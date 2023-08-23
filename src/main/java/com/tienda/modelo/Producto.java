@@ -25,9 +25,7 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public Producto() {
-
-    }
+    public Producto() {}
 
     public long getId() {
         return id;
@@ -60,5 +58,6 @@ public class Producto {
     public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
+
 
 }
