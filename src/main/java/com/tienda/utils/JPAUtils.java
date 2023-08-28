@@ -1,4 +1,4 @@
-package com.tienda.modelo.utils;
+package com.tienda.utils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

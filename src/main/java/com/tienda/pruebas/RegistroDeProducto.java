@@ -1,9 +1,8 @@
 import com.tienda.modelo.Categoria;
 import com.tienda.modelo.Producto;
-import com.tienda.modelo.dao.CategoriaDao;
-import com.tienda.modelo.dao.ProductoDao;
-import com.tienda.modelo.utils.JPAUtils;
-
+import com.tienda.dao.CategoriaDao;
+import com.tienda.dao.ProductoDao;
+import com.tienda.utils.JPAUtils;
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.util.List;
