@@ -9,12 +9,12 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombre;
-    private String dui;
+
+    @Embedded
+    private DatosPersonales datosPersonales;
 
     public Cliente(String nombre, String dui) {
-        this.nombre = nombre;
-        this.dui = dui;
+        this.datosPersonales = new DatosPersonales(nombre, dui);
     }
 
     public Cliente() {
@@ -25,18 +25,18 @@ public class Cliente {
     }
 
     public String getNombre() {
-        return nombre;
+        return datosPersonales.getNombre();
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.datosPersonales.setNombre(nombre);
     }
 
     public String getDui() {
-        return dui;
+        return datosPersonales.getDui();
     }
 
     public void setDui(String dui) {
-        this.dui = dui;
+        this.datosPersonales.setDui(dui);
     }
 }
