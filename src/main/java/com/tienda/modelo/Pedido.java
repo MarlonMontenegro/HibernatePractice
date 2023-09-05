@@ -1,42 +1,68 @@
 package com.tienda.modelo;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "clientes")
-public class Cliente {
+@Table(name = "pedidos")
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombre;
-    private String dui;
+    private LocalDate fecha = LocalDate.now();
+    private BigDecimal valorTotal = new BigDecimal(0);
+    @ManyToOne
+    private Cliente cliente;
 
-    public Cliente(String nombre, String dui) {
-        this.nombre = nombre;
-        this.dui = dui;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<ItemsPedido> items = new ArrayList<>();
+
+    public Pedido(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Cliente() {
+    public Pedido() {
+    }
+
+    public void agregarItems(ItemsPedido items) {
+        items.setPedido(this);
+        this.items.add(items);
+        this.valorTotal = this.valorTotal.add(items.getValor);
     }
 
     public long getId() {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public String getDui() {
-        return dui;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
-    public void setDui(String dui) {
-        this.dui = dui;
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

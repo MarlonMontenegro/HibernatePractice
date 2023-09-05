@@ -3,26 +3,25 @@ package com.tienda.modelo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "clientes")
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nombre;
+    private String dui;
 
-    public Categoria(String nombre) {
+    public Cliente(String nombre, String dui) {
         this.nombre = nombre;
+        this.dui = dui;
     }
 
-    public Categoria() {}
+    public Cliente() {
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -33,4 +32,11 @@ public class Categoria {
         this.nombre = nombre;
     }
 
+    public String getDui() {
+        return dui;
+    }
+
+    public void setDui(String dui) {
+        this.dui = dui;
+    }
 }

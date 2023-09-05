@@ -1,3 +1,5 @@
+package com.tienda.pruebas;
+
 import com.tienda.modelo.Categoria;
 import com.tienda.modelo.Producto;
 import com.tienda.dao.CategoriaDao;
@@ -9,13 +11,14 @@ import java.util.List;
 
 public class RegistroDeProducto {
     public static void main(String[] args) {
+
         registrarProducto();
         EntityManager manager = JPAUtils.getEntityManager();
         ProductoDao productoDao = new ProductoDao(manager);
         Producto producto = productoDao.consultaPorId(1);
         System.out.println(producto.getNombre());
 
-        List<Producto> productos = productoDao.consultarPorNomber("Samsung");
+        List<Producto> productos = productoDao.consultarPorNombre("Samsung");
         productos.forEach(p -> System.out.println(producto.getDescription()));
     }
 
@@ -34,5 +37,10 @@ public class RegistroDeProducto {
         categoriaDao.guardar(celulares);
         em.getTransaction().commit();
         em.close();
+
+
     }
+
+
+
 }
